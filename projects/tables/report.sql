@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS project.report
+CREATE TABLE IF NOT EXISTS projects.report
 (
     id           integer NOT NULL
         CONSTRAINT pk_report PRIMARY KEY,
