@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS connection.employee_project
 (
-    id_employee integer NOT NULL,
-    id_agreement  integer NOT NULL,
-    id_price  integer NOT NULL
+    id_employee  integer NOT NULL,
+    id_agreement integer NOT NULL,
+    id_price     integer NOT NULL
 );
