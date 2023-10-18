@@ -22,6 +22,13 @@ BEGIN
              LEFT JOIN humanresource.employee e
                        ON e.employee_id = s.employee_id;
 
+    IF exists(SELECT 1 FROM humanresource.employee e WHERE e.phone = _phone)
+        THEN
+            RETURN public.errmessage(_errcode := 'humanresource.employee_ins.phone_exists',
+                                     _msg := 'Такой номер телефона уже зарегитрирован!',
+                                     _detail := concat('phone = ', _phone));
+        END IF;
+
     WITH ins_cte AS (
         INSERT INTO humanresource.employee AS e ( employee_id,
                                                   employee_name,

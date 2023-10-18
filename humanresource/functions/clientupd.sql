@@ -22,6 +22,20 @@ BEGIN
              LEFT JOIN humanresource.client c
                        ON c.client_id = s.client_id;
 
+    IF exists(SELECT 1 FROM humanresource.client c WHERE c.phone = _phone)
+        THEN
+            RETURN public.errmessage(_errcode := 'humanresource.client_ins.phone_exists',
+                                     _msg := 'Такой номер телефона уже зарегитрирован!',
+                                     _detail := concat('phone = ', _phone));
+        END IF;
+
+    IF NOT exists(SELECT 1 FROM humanresource.employee c WHERE c.employee_id = _ch_employee)
+        THEN
+            RETURN public.errmessage(_errcode := 'humanresource.client_ins.ch_employee',
+                                     _msg := 'Неверный код сотрудника',
+                                     _detail := concat('phone = ', _phone));
+        END IF;
+
     WITH ins_cte AS (
         INSERT INTO humanresource.client AS e (client_id,
                                                client_name,
