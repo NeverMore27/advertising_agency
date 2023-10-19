@@ -9,7 +9,7 @@ DECLARE
     _date_start date;
     _date_end   date;
     _text       json;
-    _dt         TIMESTAMPTZ := now() AT TIME ZONE 'Europe/Moscow';
+
 BEGIN
     SELECT COALESCE(c.id, nextval('projects.reportsq')) as id,
            s.id_client,
