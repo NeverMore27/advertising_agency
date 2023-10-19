@@ -5,9 +5,9 @@ AS
 $$
 DECLARE
     _id         integer;
-    _name  varchar (50);
-    _details  json;
-    _budget decimal (10, 2);
+    _name       varchar(50);
+    _details    json;
+    _budget     decimal(10, 2);
     _date_start date;
     _date_end   date;
     _dt         TIMESTAMPTZ := now() AT TIME ZONE 'Europe/Moscow';
@@ -20,14 +20,14 @@ BEGIN
            s.date_end
     INTO _id, _name, _details, _budget, _date_start, _date_end
     FROM jsonb_to_record(_src) AS s (id integer,
-                                     name  varchar (50),
+                                     name varchar(50),
                                      details json,
                                      budget decimal(10, 2),
                                      date_start date,
                                      date_end date)
              LEFT JOIN projects.campaigns c
                        ON c.id = s.id;
-IF (_date_start > _date_end)
+    IF (_date_start > _date_end)
     THEN
         RETURN public.errmessage(_errcode := ' projects.camp_ins.date',
                                  _msg := 'Ошибочные даты',
