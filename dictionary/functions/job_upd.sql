@@ -4,9 +4,9 @@ CREATE OR REPLACE FUNCTION dictionary.job_upd(_src JSONB) RETURNS JSONB
 AS
 $$
 DECLARE
-    _name     VARCHAR(50);
+    _name         VARCHAR(50);
     _hour_payment decimal(8, 2);
-    _dt       TIMESTAMPTZ := now() AT TIME ZONE 'Europe/Moscow';
+    _dt           TIMESTAMPTZ := now() AT TIME ZONE 'Europe/Moscow';
 BEGIN
     SELECT s.name,
            s.hour_payment
@@ -17,8 +17,8 @@ BEGIN
 
     WITH ins_cte AS (
         INSERT INTO dictionary.job AS e (
-                                           name,
-                                           hour_payment)
+                                         name,
+                                         hour_payment)
             SELECT _name,
                    _hour_payment
             ON CONFLICT (id) DO UPDATE

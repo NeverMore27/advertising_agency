@@ -11,13 +11,11 @@ BEGIN
     SELECT s.name,
            s.min_cost
     INTO _name, _min_cost
-    FROM jsonb_to_record(_src) AS s (
-                                     name VARCHAR(50),
+    FROM jsonb_to_record(_src) AS s (name VARCHAR(50),
                                      min_cost decimal(8, 2));
 
     WITH ins_cte AS (
-        INSERT INTO dictionary.price AS e (
-                                           name,
+        INSERT INTO dictionary.price AS e (name,
                                            min_cost)
             SELECT _name,
                    _min_cost
