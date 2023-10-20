@@ -13,16 +13,15 @@ DECLARE
 BEGIN
     SELECT COALESCE(c.id, nextval('projects.promotionsq')) as id,
            s.id_agreement,
-           s.id_agreement,
            s.types,
            s.link,
-           s.details
+           s.detalis
     INTO _id, _id_agreement, _types, _link, _details
     FROM jsonb_to_record(_src) AS s (id integer,
                                      id_agreement integer,
                                      types varchar(50),
                                      link varchar(255),
-                                     details json)
+                                     detalis json)
              LEFT JOIN projects.report c
                        ON c.id = s.id;
 
