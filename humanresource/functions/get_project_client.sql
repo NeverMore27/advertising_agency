@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION humanresource.get_project_client(_log_id BIGINT) RETURNS JSON
+CREATE OR REPLACE FUNCTION humanresource.get_project_client(_client_id BIGINT) RETURNS JSON
     LANGUAGE plpgsql
     SECURITY DEFINER
 AS
@@ -11,7 +11,7 @@ BEGIN
               from humanresource.client
                        left join dictionary.company c on client.company_id = c.company_id
                        left join projects.agreement a on client.client_id = a.id_client
-              where client_id = _log_id) res;
+              where client_id = _client_id) res;
 
 END
 $$;

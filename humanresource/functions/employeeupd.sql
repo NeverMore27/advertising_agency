@@ -22,7 +22,7 @@ BEGIN
              LEFT JOIN humanresource.employee e
                        ON e.employee_id = s.employee_id;
 
-    IF exists(SELECT 1 FROM humanresource.employee e WHERE e.phone = _phone)
+    IF exists(SELECT 1 FROM humanresource.employee e WHERE e.phone = _phone and e.employee_id<>_employee_id)
     THEN
         RETURN public.errmessage(_errcode := 'humanresource.employee_ins.phone_exists',
                                  _msg := 'Такой номер телефона уже зарегитрирован!',

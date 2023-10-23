@@ -3,7 +3,6 @@ CREATE OR REPLACE FUNCTION humanresource.get_employee_job(_log_id BIGINT) RETURN
     SECURITY DEFINER
 AS
 $$
-DECLARE
 BEGIN
     RETURN JSONB_BUILD_OBJECT('data', json_agg(row_to_json(res)))
         FROM (select *
