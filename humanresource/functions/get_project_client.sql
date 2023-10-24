@@ -7,11 +7,11 @@ DECLARE
     _res JSONB;
 BEGIN
     RETURN JSONB_BUILD_OBJECT('data', json_agg(row_to_json(res)))
-        FROM (select client_name, phone, company_name, a.id as "ID договора", date_start, date_end, text
-              from humanresource.client
-                       left join dictionary.company c on client.company_id = c.company_id
-                       left join projects.agreement a on client.client_id = a.id_client
-              where client_id = _client_id) res;
+        FROM (SELECT client_name, phone, company_name, a.id as "ID договора", date_start, date_end, text
+              FROM humanresource.client cl
+                       JOIN dictionary.company c on client.company_id = c.company_id
+                      JOIN projects.agreement a on client.client_id = a.id_client
+              WHERE client_id = COALESCE(_client_id,cl.client_id )) res;
 
 END
 $$;
