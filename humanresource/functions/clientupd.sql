@@ -22,7 +22,7 @@ BEGIN
              LEFT JOIN humanresource.client c
                        ON c.client_id = s.client_id;
 
-    IF exists(SELECT 1 FROM humanresource.client c WHERE c.phone = _phone)
+    IF exists(SELECT 1 FROM humanresource.client c WHERE c.phone = _phone and c.client_id<>_client_id)
         THEN
             RETURN public.errmessage(_errcode := 'humanresource.client_ins.phone_exists',
                                      _msg := 'Такой номер телефона уже зарегитрирован!',
