@@ -29,4 +29,4 @@ CREATE TRIGGER history_job_insert
     BEFORE INSERT
     ON history.job
     FOR EACH ROW
-EXECUTE PROCEDURE history_job_insert_trigger();
+EXECUTE PROCEDURE history.history_job_insert_trigger();
