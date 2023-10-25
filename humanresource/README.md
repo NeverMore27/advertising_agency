@@ -17,14 +17,14 @@
   
 # humanresource.employee
 
-
 | Название столбца | Тип данных |Описание  |
 | :---         |     :---:      |          ---: |
-    |employee_id  |   BIGINT    |  идентификатор сотрудника|
-   | name        |    VARCHAR(255)   | имя сотрудника|
-   | phone_number  |  VARCHAR(11)    | номер телефона сотрудника |
-   | payment_detalis | varchar(255)   | платежная информация |
+|employee_id  |   BIGINT    |  идентификатор сотрудника|
+| name        |    VARCHAR(255)   | имя сотрудника|
+| phone_number  |  VARCHAR(11)    | номер телефона сотрудника |
+ | payment_detalis | varchar(255)   | платежная информация |
 
+ 
 <h3 align="center">Функции</h3>
 
 
