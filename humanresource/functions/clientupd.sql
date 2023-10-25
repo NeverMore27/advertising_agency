@@ -33,7 +33,7 @@ BEGIN
         THEN
             RETURN public.errmessage(_errcode := 'humanresource.client_ins.ch_employee',
                                      _msg := 'Неверный код сотрудника',
-                                     _detail := concat('phone = ', _phone));
+                                     _detail := concat('code = ', _ch_employee));
         END IF;
 
     WITH ins_cte AS (
@@ -47,6 +47,7 @@ BEGIN
                    _phone,
                    _company_id,
                    _ch_employee
+
             ON CONFLICT (client_id) DO UPDATE
                 SET phone = excluded.phone,
                     client_name = excluded.client_name,
