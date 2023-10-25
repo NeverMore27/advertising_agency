@@ -46,3 +46,27 @@ whsync.employeessyncimport(_src JSONB)
 ```
 {"data" : null}
 ```
+
+# Пример ввода
+
+
+```
+SELECT whsync.clientsyncimport(
+  '[
+    {
+      "client_id": 2222,
+      "client_name": "Барри",
+      "phone": "8900663636",
+      "company_id": 29,
+      "ch_employee": 11
+    },
+    {
+      "client_id": 221,
+      "client_name": "Карри",
+      "phone": "220-01",
+      "company_id": 29,
+      "ch_employee": 11
+    }
+  ]'::jsonb
+);
+```
