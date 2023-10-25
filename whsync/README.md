@@ -32,28 +32,12 @@
 <h3 align="center">Функции</h3>
 
 
-# Добавление работы в каталог 
-```
-SELECT dictionary.job_upd('
-{
-  "name": "Проектирование баннера",
-  "hour_payment": 250
-}')
-```
-Ответ при коректном вводе
-```
-{"data" : null}
-```
-
-
-
-# Добавление услуги в каталог
-Функции экспорта: 
+# Функции экспорта: 
 ```
 whsync.clientsyncexport(_log_id BIGINT)
 whsync.employeessyncexport(_log_id BIGINT)
 ```
-Функции импорта:
+# Функции импорта:
 ```
 whsync.clientsyncimport(_src JSONB)
 whsync.employeessyncimport(_src JSONB)
