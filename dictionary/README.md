@@ -42,7 +42,7 @@ SELECT dictionary.job_upd('
   "hour_payment": 250
 }')
 ```
-Ответ при коректном выводе
+Ответ при коректном вводе
 ```
 {"data" : null}
 ```
@@ -57,7 +57,7 @@ SELECT dictionary.price_upd('
   "min_cost": 2506
 }')
 ```
-Ответ при коректном выводе
+Ответ при коректном вводе
 ```
 {"data" : null}
 ```
